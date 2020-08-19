@@ -1,0 +1,21 @@
+<!--demo之双向绑定-->
+<meta charset="UTF-8">
+<div style="margin: 200px;">
+  <input type="text" id="a" placeholder="请输入文案">
+  <p id="b"></p>
+</div>
+<script>
+    function f() {
+        let obj = {};
+        Object.defineProperty(obj, 'hello', {
+            set(newVal) {
+                document.getElementById('a').value = newVal;
+                document.getElementById('b').innerHTML = newVal;
+            }
+        })
+        document.addEventListener('keyup', e => {
+            obj.hello = e.target.value || '';
+        })
+    }
+    f();
+</script>
